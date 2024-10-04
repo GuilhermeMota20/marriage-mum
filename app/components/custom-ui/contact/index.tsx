@@ -5,22 +5,28 @@ import { ContactPhone } from "./contactPhone";
 const mockData = [
   {
     name: "Fernanda",
-    number: "+55 11 94523-7326"
+    number: "+55 11 94523-7326",
+    message: `Olá, Fernanda! Tudo bem? Estou entrando em contato através do site {...}. Preciso esclarecer algumas dúvidas com você. Você teria um momento disponível agora?`,
+    type: "ADM"
   },
   {
     name: "Gilson",
-    number: "+55 11 91484-0810"
+    number: "+55 11 91484-0810",
+    message: `Olá, Gilson! Tudo bem? Estou entrando em contato através do site {...}. Preciso esclarecer algumas dúvidas com você. Você teria um momento disponível agora?`,
+    type: "ADM"
   },
-];
-
-const mockData2 = [
   {
     name: "Guilherme",
-    number: "+55 11 93033-9592"
+    number: "+55 11 93033-9592",
+    message: `Olá, Guilherme! Tudo bem? Estou entrando em contato através do site {...}. Preciso esclarecer algumas dúvidas com você. Você teria um momento disponível agora?`,
+    type: "DEV"
   },
 ];
 
 export const Contact = () => {
+  const admContactList = mockData?.filter((item) => item?.type?.includes("ADM"));
+  const devContactList = mockData?.filter((item) => item?.type?.includes("DEV"));
+
   return (
     <>
       <section className="w-full flex flex-col gap-8 mb-32">
@@ -39,8 +45,8 @@ export const Contact = () => {
             "lg:grid-cols-2 lg:grid-rows-2"
           )}
         >
-          <ContactPhone title="Contato com os Administradores" contact={mockData} />
-          <ContactPhone title="Contato com o Desenvolvedor" contact={mockData2} />
+          <ContactPhone title="Contato com os Administradores" contact={admContactList} />
+          <ContactPhone title="Contato com o Desenvolvedor" contact={devContactList} />
 
           <ContactMail />
         </div>
