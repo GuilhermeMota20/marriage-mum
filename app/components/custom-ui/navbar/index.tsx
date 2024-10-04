@@ -20,7 +20,7 @@ const mockData = [
     link: "gift",
   },
   {
-    label: "Conato/Suporte",
+    label: "Contato/Suporte",
     link: "suport",
   },
 ];
