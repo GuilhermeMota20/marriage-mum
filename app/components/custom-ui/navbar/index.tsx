@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 import { Ellipsis, Gift, HouseIcon, ImagesIcon, MapPinned, MessageSquareMore, Ticket } from "lucide-react";
 import Link from "next/link";
