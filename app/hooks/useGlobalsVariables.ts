@@ -22,7 +22,10 @@ type GlonalsVariablesType = {
   onCloseModalGiftSend: () => void;
 };
 
-export const useGlobalsVariables = create<GlonalsVariablesType>((set, _get) => ({
+export const useGlobalsVariables = create<GlonalsVariablesType>((
+  set, 
+  // get
+) => ({
   isOpenModalConfirmPresence: false,
   onOpenModalConfirmPresence: () => set({ isOpenModalConfirmPresence: true }),
   onCloseModalConfirmPresence: () => set({ isOpenModalConfirmPresence: false }),
