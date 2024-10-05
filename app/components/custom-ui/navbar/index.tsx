@@ -31,8 +31,8 @@ export const Navbar = () => {
   const [anchor, setAnchor] = useState('');
   const [openMenu, setOpenMenu] = useState(false);
 
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // const pathname = usePathname();
+  // const searchParams = useSearchParams();
 
   const handleToggleMenu = () => {
     setOpenMenu((prev) => !prev);
@@ -42,14 +42,14 @@ export const Navbar = () => {
     setOpenMenu(false);
   };
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash;
-      if (hash) {
-        setAnchor(hash.substring(1));
-      }
-    }
-  }, [pathname, searchParams]);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     const hash = window.location.hash;
+  //     if (hash) {
+  //       setAnchor(hash.substring(1));
+  //     }
+  //   }
+  // }, [pathname, searchParams]);
 
   return (
     <>
