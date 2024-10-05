@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const {
       para,
-      email,
+      // _email,
       mensagem,
       assunto
     } = await req.json();
