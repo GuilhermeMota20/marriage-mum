@@ -23,8 +23,8 @@ import { db } from "@/app/services/Firebase"
 const profileFormSchema = z.object({
   username: z
     .string()
-    .min(1, { 
-      message: "Campo obrigatório" 
+    .min(1, {
+      message: "Campo obrigatório"
     })
     .min(3, {
       message: "Seu nome deve conter no minimo tres caracteres.",
@@ -39,9 +39,11 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 export default function FormConfirmPresenca() {
   const { onCloseModalConfirmPresence } = useGlobalsVariables();
 
-  const form = useForm<ProfileFormValues>({
+  const form = useForm({
     resolver: zodResolver(profileFormSchema),
-    mode: "onChange",
+    defaultValues: {
+      username: "",
+    },
   });
 
   async function onSubmit(data: ProfileFormValues) {
@@ -72,7 +74,7 @@ export default function FormConfirmPresenca() {
           <FormField
             control={form.control}
             name="username"
-            render={({ field }) => (
+            render={({ field, fieldState }) => (
               <FormItem>
                 <FormLabel>Nome completo</FormLabel>
                 <FormControl>
@@ -81,7 +83,9 @@ export default function FormConfirmPresenca() {
                 <FormDescription>
                   Seu nome ficara disponivel em uma lista para que os organizadores possam ter ciencia de quem estara presente antecipadamente.
                 </FormDescription>
-                <FormMessage />
+                {fieldState.error ? (
+                  <FormMessage>{fieldState.error.message}</FormMessage>
+                ) : null}
               </FormItem>
             )}
           />

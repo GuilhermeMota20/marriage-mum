@@ -23,7 +23,7 @@ export const ContactPhone: React.FC<Props> = ({
     <>
       <div
         className={cn(
-          "flex flex-col items-start justify-between rounded-lg h-auto p-4 gap-8 decoration-transparent bg-white text-[#49516F] hover:text-[#49516F] shadow-lg",
+          "w-full h-full flex flex-col items-start justify-between rounded-lg p-4 gap-8 decoration-transparent bg-white text-[#49516F] hover:text-[#49516F] shadow-lg",
           "md:flex-row md:items-center lg:px-12 lg:py-16",
         )}
       >
