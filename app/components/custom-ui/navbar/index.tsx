@@ -3,8 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Ellipsis, Gift, HouseIcon, ImagesIcon, MapPinned, MessageSquareMore, Ticket } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "../../ui/button";
 import { Links } from "./links";
 
