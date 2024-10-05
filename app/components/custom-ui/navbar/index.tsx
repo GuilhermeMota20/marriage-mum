@@ -27,7 +27,7 @@ const mockData = [
 ];
 
 export const Navbar = () => {
-  const [anchor, setAnchor] = useState('');
+  // const [anchor, setAnchor] = useState('');
   const [openMenu, setOpenMenu] = useState(false);
 
   // const pathname = usePathname();
@@ -61,13 +61,16 @@ export const Navbar = () => {
             <Links
               label={item?.label}
               link={item?.link}
-              active={anchor === item?.link}
+              active={
+                false
+                // anchor === item?.link
+              }
             />
 
             <div
               className={cn(
                 "absolute w-full h-[2px] transition animate-in rounded-lg bottom-0",
-                anchor === item?.link ? "bg-[#94A89C]" : "animate-out"
+                // anchor === item?.link ? "bg-[#94A89C]" : "animate-out"
               )}
             />
           </div>
