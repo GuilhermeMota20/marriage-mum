@@ -1,6 +1,6 @@
+import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
 import { CalendarHeart, Clock4, Map, PartyPopper } from "lucide-react";
 import { Item } from "./item";
-import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
 
 export const Recepcao = () => {
   const { onOpenModalViewMapRecepcao } = useGlobalsVariables();

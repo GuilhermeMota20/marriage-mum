@@ -1,6 +1,6 @@
-import { CalendarHeart, Church, Clock4, Map } from "lucide-react"
-import { Item } from "./item"
 import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
+import { CalendarHeart, Church, Clock4, Map } from "lucide-react";
+import { Item } from "./item";
 
 export const Cerimonia = () => {
   const { onOpenModalViewMap } = useGlobalsVariables();

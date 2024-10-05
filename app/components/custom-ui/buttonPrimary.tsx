@@ -1,8 +1,8 @@
 "use client";
 
-import { Ticket } from "lucide-react"
-import { Button } from "../ui/button"
+import { Ticket } from "lucide-react";
 import React from "react";
+import { Button } from "../ui/button";
 
 interface Props {
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];

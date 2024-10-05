@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import LogoMark from "@/app/assets/Logo-mark.svg";
+import Image from "next/image";
 
 export const Logo = () => {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
 import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
-import Modal from "./modal";
 import FormConfirmPresenca from "../form/formConfirmGuest";
+import Modal from "./modal";
 
 export default function ModalConfirmGuest() {
   const { isOpenModalConfirmPresence, onCloseModalConfirmPresence } = useGlobalsVariables();
