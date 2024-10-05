@@ -1,6 +1,5 @@
 "use client"
 
-import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables"
 import {
   Form,
   FormControl,
@@ -11,14 +10,15 @@ import {
   FormMessage,
 } from "@/app/components/ui/form"
 import { Input } from "@/app/components/ui/input"
+import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { addDoc, collection } from "firebase/firestore"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 
+import { db } from "@/app/services/Firebase"
 import { z } from "zod"
 import { ButtonPrimary } from "../buttonPrimary"
-import { db } from "@/app/services/Firebase"
 
 const profileFormSchema = z.object({
   username: z

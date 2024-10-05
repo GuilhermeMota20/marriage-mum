@@ -1,7 +1,7 @@
 // app/snake/page.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Tipos para as coordenadas
 interface Coordinate {

@@ -15,11 +15,11 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { toast } from "sonner"
 
 import { ContactPhone } from "@/app/types/contactPhone"
+import { MoveRightIcon } from "lucide-react"
 import { z } from "zod"
 import { Button } from "../../ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../ui/select"
 import { Textarea } from "../../ui/textarea"
-import { MoveRightIcon } from "lucide-react"
 
 interface Props {
   listContact: ContactPhone[];

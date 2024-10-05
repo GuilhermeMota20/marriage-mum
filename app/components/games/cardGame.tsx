@@ -1,8 +1,8 @@
 // app/cards/page.tsx
 'use client';
 
+import { Flame, Rocket, Shield, Skull, Sword, Truck, User } from 'lucide-react'; // Importando ícones
 import React, { useState } from 'react';
-import { GuitarIcon, Rocket, Flame, Shield, Skull, User, Truck, Target, Sword } from 'lucide-react'; // Importando ícones
 
 // Tipos para os dados das cartas e personagens
 interface Card {
@@ -19,7 +19,7 @@ interface Character {
 
 // Definindo as cartas disponíveis para o jogador
 const playerCards: Card[] = [
-  { id: 1, name: 'Marco - Heavy Machine Gun', damage: 25, icon: <Sword  className="text-yellow-400 w-12 h-12" /> },
+  { id: 1, name: 'Marco - Heavy Machine Gun', damage: 25, icon: <Sword className="text-yellow-400 w-12 h-12" /> },
   { id: 2, name: 'Tarma - Rocket Launcher', damage: 30, icon: <Rocket className="text-red-400 w-12 h-12" /> },
   { id: 3, name: 'Fio - Flame Shot', damage: 20, icon: <Flame className="text-orange-400 w-12 h-12" /> },
   { id: 4, name: 'Eri - Shotgun', damage: 35, icon: <Shield className="text-blue-400 w-12 h-12" /> },
@@ -46,7 +46,7 @@ const CardGame: React.FC = () => {
     const newEnemyHp = Math.max(0, enemy.hp - card.damage);
     setEnemy({ ...enemy, hp: newEnemyHp });
     setMessage(`Você atacou com ${card.name} causando ${card.damage} de dano!`);
-    
+
     setIsPlayerTurn(false);
 
     // Verificar se o inimigo foi derrotado

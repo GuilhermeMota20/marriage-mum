@@ -1,10 +1,10 @@
-import { Links } from "./links";
-import React, { useEffect, useState } from "react";
-import { usePathname, useSearchParams } from 'next/navigation';
 import { cn } from "@/lib/utils";
-import { Button } from "../../ui/button";
 import { Ellipsis, Gift, HouseIcon, ImagesIcon, MapPinned, MessageSquareMore, Ticket } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from "react";
+import { Button } from "../../ui/button";
+import { Links } from "./links";
 
 const mockData = [
   {

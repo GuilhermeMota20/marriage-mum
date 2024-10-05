@@ -1,8 +1,8 @@
 "use client";
 
 import { CircleCheckBig, Info, Store } from "lucide-react";
-import { Button } from "../../ui/button";
 import React from "react";
+import { Button } from "../../ui/button";
 import { Skeleton } from "../../ui/skeleton";
 
 interface Props {

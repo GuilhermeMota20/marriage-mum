@@ -1,8 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
-import { Button } from "../../ui/button";
-import { ImagesIcon } from "lucide-react";
 
 interface Props {
   label: string;

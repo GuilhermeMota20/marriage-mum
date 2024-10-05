@@ -1,7 +1,7 @@
 // app/snake/page.jsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Define o tamanho do campo e a velocidade do jogo
 const GRID_SIZE = 20;

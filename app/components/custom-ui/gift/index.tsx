@@ -1,11 +1,11 @@
 "use client";
 
 import { Loader2, RotateCw } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "../../ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { CardGift } from "./cardGift";
 import { NotFound } from "./notFound";
-import { useEffect, useState } from "react";
 
 export const Gift = () => {
   const [isViewSkeleton, setIsViewSkeleton] = useState(true);

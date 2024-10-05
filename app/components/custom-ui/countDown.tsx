@@ -31,7 +31,7 @@ const Countdown: React.FC<CountdownProps> = ({ targetDate }) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetDate]);
 
   const timeKeys = Object.entries(timeRemaining);

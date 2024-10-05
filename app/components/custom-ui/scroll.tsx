@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import ScrolIcon from "@/app/assets/Scroll.svg";
+import Image from "next/image";
 
 export const Scroll = () => {
   return (
