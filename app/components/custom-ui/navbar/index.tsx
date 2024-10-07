@@ -1,11 +1,19 @@
 "use client"
 
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "@/app/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { Ellipsis, Gift, HouseIcon, ImagesIcon, MapPinned, MessageSquareMore, Ticket } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { CircleEllipsisIcon, LockIcon, TicketIcon } from "lucide-react";
 import { Button } from "../../ui/button";
+import { ButtonPrimary } from "../buttonPrimary";
 import { Links } from "./links";
+import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
 
 const mockData = [
   {
@@ -27,28 +35,7 @@ const mockData = [
 ];
 
 export const Navbar = () => {
-  // const [anchor, setAnchor] = useState('');
-  const [openMenu, setOpenMenu] = useState(false);
-
-  // const pathname = usePathname();
-  // const searchParams = useSearchParams();
-
-  const handleToggleMenu = () => {
-    setOpenMenu((prev) => !prev);
-  };
-
-  const handleCloseMenu = () => {
-    setOpenMenu(false);
-  };
-
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     const hash = window.location.hash;
-  //     if (hash) {
-  //       setAnchor(hash.substring(1));
-  //     }
-  //   }
-  // }, [pathname, searchParams]);
+  const { onOpenModalConfirmPresence } = useGlobalsVariables();
 
   return (
     <>
@@ -70,78 +57,68 @@ export const Navbar = () => {
             <div
               className={cn(
                 "absolute w-full h-[2px] transition animate-in rounded-lg bottom-0",
-                // anchor === item?.link ? "bg-[#94A89C]" : "animate-out"
               )}
             />
           </div>
         ))}
       </div>
 
-      <div className="relative flex md:hidden items-center justify-between gap-2">
-        <Link href={`#${mockData[2]?.link}`}>
-          <Button size="lg" variant="secondary" className="rounded-full shadow-lg" onClick={handleCloseMenu}>
-            <Gift className="h-4 w-4" />
-          </Button>
-        </Link>
+      <div className="flex md:hidden items-center justify-between gap-2">
+        <Sheet>
+          <SheetTrigger>
+            <Button variant="ghost" type="button">
+              <CircleEllipsisIcon />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader className="mb-8">
+              <SheetTitle className="text-start">Atalhos</SheetTitle>
+            </SheetHeader>
 
-        <Button size="lg" variant="secondary" className="rounded-full shadow-lg" onClick={handleCloseMenu}>
-          <Ticket className="h-4 w-4" />
-        </Button>
+            <div className="h-full flex flex-col justify-between">
+              <div className="flex flex-col gap-4">
+                {mockData?.map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative flex items-start flex-col gap-4"
+                  >
+                    <Links
+                      label={item?.label}
+                      link={item?.link}
+                      active={
+                        false
+                        // anchor === item?.link
+                      }
+                    />
 
-        <Button
-          size="lg"
-          variant="secondary"
-          onClick={handleToggleMenu}
-          className={cn(
-            "rounded-full shadow-lg",
-            openMenu ? "brightness-90" : "",
-          )}
-        >
-          <Ellipsis className="h-4 w-4" />
-        </Button>
-
-        <div
-          className={cn(
-            "absolute bg-white drop-shadow-lg w-full -z-30 bottom-16 rounded-lg border transition",
-            openMenu ? "block animate-in" : "hidden animate-out"
-          )}
-        >
-          <div className="flex flex-col items-start gap-8 p-4">
-            <div className="w-full border-b pb-4">
-              <h4 className="font-bold">Atalhos</h4>
-            </div>
-
-            <div className="grid grid-cols-2 w-full gap-2">
-              <Link href={`#${mockData[0]?.link}`} className="flex flex-col items-center justify-center gap-4">
-                <Button size="lg" variant="secondary" className="rounded-full shadow-lg" onClick={handleCloseMenu}>
-                  <HouseIcon className="h-4 w-4" />
-                </Button>
-                <span className="text-xs font-light">Apresentação</span>
-              </Link>
-
-              <Link href={`#${mockData[1]?.link}`} className="flex flex-col items-center justify-center gap-4">
-                <Button size="lg" variant="secondary" className="rounded-full shadow-lg" onClick={handleCloseMenu}>
-                  <MapPinned className="h-4 w-4" />
-                </Button>
-                <span className="text-xs font-light">Locais</span>
-              </Link>
-
-              <div className="flex flex-col items-center justify-center gap-4">
-                <Button size="lg" variant="secondary" className="rounded-full shadow-lg" onClick={handleCloseMenu}>
-                  <ImagesIcon className="h-4 w-4" />
-                </Button>
-                <span className="text-xs font-light">Galeria</span>
+                    <div
+                      className={cn(
+                        "absolute w-full h-[2px] transition animate-in rounded-lg bottom-0",
+                      )}
+                    />
+                  </div>
+                ))}
               </div>
 
-              <Link href={`#suport`} className="flex flex-col items-center justify-center gap-4">
-                <Button size="lg" variant="secondary" className="rounded-full shadow-lg" onClick={handleCloseMenu}>
-                  <MessageSquareMore className="h-4 w-4" />
-                </Button>
-                <span className="text-xs font-light">Contato/Suporte</span>
-              </Link>
+              <div className="w-full mb-12 flex flex-col gap-4">
+                <div className="w-full flex gap-2 items-center justify-center p-4 rounded-lg bg-secondary transition hover:brightness-90 hover:shadow-lg hover:cursor-pointer">
+                  <LockIcon className="mr-2 h-4 w-4" />
+                  Acesso Administrativo
+                </div>
+
+                <div
+                  onClick={() => {
+                    onOpenModalConfirmPresence();
+                  }}
+                  className="w-full flex gap-2 items-center justify-center text-white p-4 rounded-lg bg-[#607A53] transition hover:bg-[#607A53] hover:brightness-90 hover:shadow-lg hover:shadow-[#607A53] hover:cursor-pointer"
+                >
+                  <TicketIcon className="mr-2 h-4 w-4" />
+                  Confirmar presença
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </>
   )

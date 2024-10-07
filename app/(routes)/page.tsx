@@ -1,5 +1,7 @@
 import { Banner } from "../components/custom-ui/banner";
 import { Contact } from "../components/custom-ui/contact";
+import { Faq } from "../components/custom-ui/faq";
+import { Footer } from "../components/custom-ui/footer";
 import { Gift } from "../components/custom-ui/gift";
 import { Header } from "../components/custom-ui/header";
 import { Pressentation } from "../components/custom-ui/pressentation";
@@ -24,11 +26,10 @@ export default function Home() {
         <Resume />
         <Gift />
         <Contact />
+        <Faq />
       </main>
 
-      <footer className="flex items-center justify-center gap-6 w-full bg-white border-t-2 border-[#94A89C] p-2 md:p-8 lg:p-24 rounded-b-lg">
-
-      </footer>
+      <Footer />
     </div>
   );
 }

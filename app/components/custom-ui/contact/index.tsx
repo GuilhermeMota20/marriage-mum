@@ -1,8 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ContactMail } from "./contactMail";
+// import { ContactMail } from "./contactMail";
 import { ContactPhone } from "./contactPhone";
+import { TitleSection } from "../titleSection";
 
 export const Contact = () => {
   const mockData = [
@@ -37,12 +38,10 @@ export const Contact = () => {
       <section className="w-full flex flex-col gap-8 mb-32">
         <div id="suport" className="mb-36" />
 
-        <div className="flex flex-col border-b pb-4">
-          <h2 className="text-4xl font-bold">Contato/Suporte</h2>
-          <p className="text-sm font-light">
-            Tire suas dúvidas enviando uma mensagem ao desenvolvedor ou administrador pelo WhatsApp ou pelos outros meios de comunicação listados abaixo:
-          </p>
-        </div>
+        <TitleSection
+          title="Contato/Suporte"
+          description="Tire suas dúvidas enviando uma mensagem ao desenvolvedor ou administrador pelo WhatsApp ou pelos outros meios de comunicação listados abaixo:"
+        />
 
         <div
           className={cn("flex flex-col gap-4")}
@@ -55,12 +54,12 @@ export const Contact = () => {
             <ContactPhone title="Contato com o Desenvolvedor" contact={devContactList} />
           </div>
 
-          <div className={cn(
+          {/* <div className={cn(
             "grid grid-cols-1 gap-4",
             "lg:grid-cols-2",
           )}>
             <ContactMail listContact={mockData} />
-          </div>
+          </div> */}
         </div>
       </section >
     </>

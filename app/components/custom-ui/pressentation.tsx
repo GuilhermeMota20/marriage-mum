@@ -1,9 +1,11 @@
 "use client";
 
-import { Heart } from "lucide-react";
+import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
+import { Heart, TicketIcon } from "lucide-react";
 import Countdown from "./countDown";
 
 export const Pressentation = () => {
+  const { onOpenModalConfirmPresence } = useGlobalsVariables();
   const targetDate = new Date('2025-01-18T15:00:00'); // Defina sua data aqui
 
   return (
@@ -34,6 +36,16 @@ export const Pressentation = () => {
         </div>
 
         <Countdown targetDate={targetDate} />
+
+        <div
+          onClick={() => {
+            onOpenModalConfirmPresence();
+          }}
+          className="flex md:hidden w-full gap-2 items-center justify-center text-white p-4 rounded-lg bg-[#607A53] transition hover:bg-[#607A53] hover:brightness-90 hover:shadow-lg hover:shadow-[#607A53] hover:cursor-pointer"
+        >
+          <TicketIcon className="mr-2 h-4 w-4" />
+          Confirmar presença
+        </div>
       </div>
     </>
   )

@@ -11,7 +11,7 @@ export default function ModalViewMapRecepcao() {
     <>
       {isOpenModalViewMapRecepcao && (
         <Modal
-          title="Nao sabe como chegar?"
+          title="Não sabe como chegar?"
           description="Aqui esta um mapa para facilitar sua locomoção."
           onClose={onCloseModalViewMapRecepcao}
         >
