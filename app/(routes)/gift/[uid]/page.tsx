@@ -51,13 +51,6 @@ export default async function Page({ params }: { params: Params }) {
       <main className="flex flex-col p-2 md:p-8 lg:p-24 gap-8 w-full items-center sm:items-start">
         <ButtonPrev />
 
-        <div className="w-full">
-          <TitleSection
-            title="Orientações"
-            description={`Caso deseje presentear com o valor do item, selecione a aba "Presentar com Pix", mas se pretende comprar em algum site de sua escolha, clique em "Comprar de sites externos". Sigas as orientações abaixo, em caso de duvidas.`}
-          />
-        </div>
-
         <Tabs defaultValue="pix" className="w-full">
           <TabsList className="w-full h-full md:ps-0 overflow-y-scroll mb-8">
             <TabsTrigger value="pix">Presentear com Pix</TabsTrigger>
@@ -95,7 +88,7 @@ export default async function Page({ params }: { params: Params }) {
                 <Gallery data={resultGift as unknown as Gift} />
 
                 <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-                  <Info data={resultGift as unknown as Gift} />
+                  <Info data={resultGift as unknown as Gift} isRedirectToPay={true} />
                 </div>
               </div>
             </section>

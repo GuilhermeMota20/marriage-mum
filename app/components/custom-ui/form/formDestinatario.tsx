@@ -177,7 +177,7 @@ export default function FormDestinatario() {
                       <Textarea className="resize-none" {...field} />
                     </FormControl>
                     <FormDescription className="flex items-center justify-between">
-                      Descreva suas dúvidas aqui.
+                      Escreva uma mensagem ao casal.
                       <span>{`${field?.value?.length}/250`}</span>
                     </FormDescription>
                     {fieldState.error ? (

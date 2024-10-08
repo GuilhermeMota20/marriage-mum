@@ -116,7 +116,7 @@ export const Gift: React.FC<Props> = ({
       <TitleSection title="Lista de presentes" />
 
       <Tabs defaultValue={currentTab} className="w-full">
-        <TabsList className="w-full h-full ps-36 md:ps-0 overflow-y-scroll">
+        <TabsList className="w-full h-full overflow-y-scroll">
           <TabsTrigger
             value="disponiveis"
             onClick={() => handleToggleFilter("disponiveis")}

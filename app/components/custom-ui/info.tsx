@@ -9,15 +9,24 @@ import usePreviewModal from "@/app/hooks/usePreviewModal";
 
 interface InfoProps {
   data?: Gift;
+  isRedirectToPay?: boolean;
 };
 
 const Info: React.FC<InfoProps> = ({
-  data
+  data,
+  isRedirectToPay = false,
 }) => {
   const { onClose } = usePreviewModal();
   const router = useRouter();
 
   const abrirPopup = () => {
+    if (isRedirectToPay) {
+      const url = data?.data?.linkPaid?.text;
+      const options = 'width=600,height=800,menubar=0,toolbar=0,location=0';
+      window.open(url, '_blank', options);
+      return;
+    };
+
     onClose();
     router?.push(`/gift/${data?.uid}`);
   };
