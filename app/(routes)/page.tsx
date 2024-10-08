@@ -17,7 +17,7 @@ export default async function Page() {
     <div className="font-[family-name:var(--font-geist-sans)] bg-[#F4F4F4] h-100 flex flex-col items-center rounded-md">
       <Header />
 
-      <main className="flex flex-col p-2 md:p-8 lg:p-24 gap-8 md:gap-32 w-full items-center sm:items-start">
+      <main className="flex flex-col p-3 md:p-8 lg:p-24 gap-8 md:gap-32 w-full items-center sm:items-start">
         <section className="flex flex-col-reverse xl:grid xl:grid-cols-2">
           <Pressentation />
           <Banner />

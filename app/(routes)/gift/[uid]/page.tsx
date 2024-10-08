@@ -48,7 +48,7 @@ export default async function Page({ params }: { params: Params }) {
         Aqui você tem 100% de privacidade; todas as suas informações estão completamente seguras.
       </div>
 
-      <main className="flex flex-col p-2 md:p-8 lg:p-24 gap-8 w-full items-center sm:items-start">
+      <main className="flex flex-col p-3 md:p-8 lg:p-24 gap-8 w-full items-center sm:items-start">
         <ButtonPrev />
 
         <Tabs defaultValue="pix" className="w-full">
