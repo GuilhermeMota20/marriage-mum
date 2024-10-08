@@ -17,9 +17,9 @@ type GlonalsVariablesType = {
   onOpenModalGiftMore: () => void;
   onCloseModalGiftMore: () => void;
 
-  isOpenModalGiftSend: boolean;
-  onOpenModalGiftSend: () => void;
-  onCloseModalGiftSend: () => void;
+  isOpenModalPinAccess: boolean;
+  onOpenModalPinAccess: () => void;
+  onCloseModalPinAccess: () => void;
 };
 
 export const useGlobalsVariables = create<GlonalsVariablesType>((
@@ -41,7 +41,7 @@ export const useGlobalsVariables = create<GlonalsVariablesType>((
   onOpenModalGiftMore: () => set({ isOpenModalGiftMore: true }),
   onCloseModalGiftMore: () => set({ isOpenModalGiftMore: false }),
   
-  isOpenModalGiftSend: false,
-  onOpenModalGiftSend: () => set({ isOpenModalGiftMore: true }),
-  onCloseModalGiftSend: () => set({ isOpenModalGiftMore: false }),
+  isOpenModalPinAccess: false,
+  onOpenModalPinAccess: () => set({ isOpenModalPinAccess: true }),
+  onCloseModalPinAccess: () => set({ isOpenModalPinAccess: false }),
 }));

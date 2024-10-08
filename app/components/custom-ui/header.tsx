@@ -9,7 +9,7 @@ import { Logo } from "./logo";
 import { Navbar } from "./navbar";
 
 export const Header = () => {
-  const { onOpenModalConfirmPresence } = useGlobalsVariables();
+  const { onOpenModalConfirmPresence, onOpenModalPinAccess } = useGlobalsVariables();
 
   return (
     <>
@@ -40,7 +40,7 @@ export const Header = () => {
           )}
         >
           <div className="flex items-center gap-4">
-            <Button size="lg" variant="secondary" className="w-full shadow-lg">
+            <Button size="lg" variant="secondary" className="w-full shadow-lg" onClick={onOpenModalPinAccess}>
               <LockIcon className="mr-2 h-4 w-4" />
               <span className="hidden lg:block">
                 Acesso Administrativo

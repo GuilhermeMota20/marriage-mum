@@ -36,7 +36,7 @@ const mockData = [
 ];
 
 export const Navbar = () => {
-  const { onOpenModalConfirmPresence } = useGlobalsVariables();
+  const { onOpenModalConfirmPresence, onOpenModalPinAccess } = useGlobalsVariables();
 
   const [onOpen, setOnOpen] = useState(false);
 
@@ -117,6 +117,7 @@ export const Navbar = () => {
                 <div
                   onClick={() => {
                     handleToggleOpenSheet();
+                    onOpenModalPinAccess();
                   }}
                   className="w-full flex gap-2 items-center justify-center p-4 rounded-lg bg-secondary transition hover:brightness-90 hover:shadow-lg hover:cursor-pointer"
                 >
