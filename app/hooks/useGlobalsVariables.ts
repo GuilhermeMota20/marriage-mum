@@ -24,7 +24,6 @@ type GlonalsVariablesType = {
 
 export const useGlobalsVariables = create<GlonalsVariablesType>((
   set, 
-  // get
 ) => ({
   isOpenModalConfirmPresence: false,
   onOpenModalConfirmPresence: () => set({ isOpenModalConfirmPresence: true }),

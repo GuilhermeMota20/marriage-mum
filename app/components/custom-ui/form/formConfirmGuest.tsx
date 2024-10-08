@@ -53,14 +53,12 @@ export default function FormConfirmPresenca() {
         username: data?.username,
       };
 
-      console.log("Tentando adicionar documento...", formData);
       await addDoc(ref, formData);
 
-      console.log("Documento adicionado com sucesso");
       toast.success("Presença confirmada com sucesso!");
       onCloseModalConfirmPresence();
     } catch (error) {
-      console.error("Erro ao adicionar documento: ", error);
+      console.error("Erro ao adicionar documento:", error);
       toast.error(
         "Não foi possível confirmar sua presença! Por favor, tente novamente mais tarde."
       );

@@ -28,13 +28,13 @@ export default function Modal({ children, title, description, size, onClose }: M
           size ? size : "max-w-xl"
         )}
       >
-        <button
+        <div
           aria-label="close alert"
-          className="absolute right-3 sm:right-4 rounded-md transition p-2 hover:bg-slate-100  hover:shadow-sm"
+          className="absolute right-3 sm:right-4 rounded-md transition p-2 hover:bg-slate-100  hover:shadow-sm hover:cursor-pointer"
           onClick={onClose}
         >
           <X className="h-4 w-4" />
-        </button>
+        </div>
         <h2 className={cn(
           "font-medium mb-5 text-lg md:text-2xl",
           description && "mb-0"

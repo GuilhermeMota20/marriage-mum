@@ -7,8 +7,12 @@ import { Header } from "../components/custom-ui/header";
 import { Pressentation } from "../components/custom-ui/pressentation";
 import { Resume } from "../components/custom-ui/resume";
 import { Scroll } from "../components/custom-ui/scroll";
+import { getGifts } from "../hooks/useGifts";
+import { GiftsPagination } from "../types/gift";
 
-export default function Home() {
+export default async function Page() {
+  const { giftsPagination } = await getGifts();
+
   return (
     <div className="font-[family-name:var(--font-geist-sans)] bg-[#F4F4F4] h-100 flex flex-col items-center rounded-md">
       <Header />
@@ -24,7 +28,7 @@ export default function Home() {
         </section>
 
         <Resume />
-        <Gift />
+        <Gift giftsPagination={giftsPagination as unknown as GiftsPagination} />
         <Contact />
         <Faq />
       </main>
@@ -32,4 +36,4 @@ export default function Home() {
       <Footer />
     </div>
   );
-}
+};

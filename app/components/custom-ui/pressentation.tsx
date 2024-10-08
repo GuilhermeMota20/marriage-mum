@@ -6,7 +6,7 @@ import Countdown from "./countDown";
 
 export const Pressentation = () => {
   const { onOpenModalConfirmPresence } = useGlobalsVariables();
-  const targetDate = new Date('2025-01-18T15:00:00'); // Defina sua data aqui
+  const targetDate = new Date('2025-01-18T15:00:00');
 
   return (
     <>

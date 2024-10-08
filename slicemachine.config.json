@@ -1,0 +1,7 @@
+{
+  "repositoryName": "marriage",
+  "adapter": "@slicemachine/adapter-next",
+  "apiEndpoint": "https://marriage.cdn.prismic.io/api/v2",
+  "libraries": ["./slices"],
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}

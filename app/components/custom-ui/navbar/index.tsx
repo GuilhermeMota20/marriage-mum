@@ -2,18 +2,16 @@
 
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger
 } from "@/app/components/ui/sheet";
+import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
 import { cn } from "@/lib/utils";
 import { CircleEllipsisIcon, LockIcon, TicketIcon } from "lucide-react";
 import { Button } from "../../ui/button";
-import { ButtonPrimary } from "../buttonPrimary";
 import { Links } from "./links";
-import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
 
 const mockData = [
   {
@@ -50,7 +48,6 @@ export const Navbar = () => {
               link={item?.link}
               active={
                 false
-                // anchor === item?.link
               }
             />
 
@@ -87,7 +84,6 @@ export const Navbar = () => {
                       link={item?.link}
                       active={
                         false
-                        // anchor === item?.link
                       }
                     />
 

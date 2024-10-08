@@ -1,9 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-// import { ContactMail } from "./contactMail";
-import { ContactPhone } from "./contactPhone";
 import { TitleSection } from "../titleSection";
+import { ContactPhone } from "./contactPhone";
 
 export const Contact = () => {
   const mockData = [

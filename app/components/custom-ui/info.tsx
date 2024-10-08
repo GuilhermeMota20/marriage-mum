@@ -4,6 +4,8 @@ import { Gift } from "@/app/types/gift";
 import { StoreIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import Currency from "./currency";
+import { useRouter } from "next/navigation";
+import usePreviewModal from "@/app/hooks/usePreviewModal";
 
 interface InfoProps {
   data?: Gift;
@@ -12,8 +14,12 @@ interface InfoProps {
 const Info: React.FC<InfoProps> = ({
   data
 }) => {
+  const { onClose } = usePreviewModal();
+  const router = useRouter();
+
   const abrirPopup = () => {
-    window.open(`${data?.linkPaid}`, "Popup", "width=600,height=800");
+    onClose();
+    router?.push(`/gift/${data?.uid}`);
   };
 
   return (
@@ -21,12 +27,12 @@ const Info: React.FC<InfoProps> = ({
       <div className="flex flex-col justify-between h-full">
         <div>
           <h1 className="text-4xl font-bold">
-            {data?.name}
+            {data?.data?.name}
           </h1>
 
           <div className="mt-3 flex items-end justify-between">
             <p className="text-2xl font-bold">
-              <Currency value={data?.price} />
+              <Currency value={data?.data?.price} />
             </p>
           </div>
 
@@ -35,14 +41,14 @@ const Info: React.FC<InfoProps> = ({
           <div className="flex flex-col gap-y-6">
             <h4 className="font-bold">Links para consulta de preços:</h4>
 
-            {data?.referralLinks?.length! > 0 ? (
+            {data!.data?.referralLinks?.length > 0 ? (
               <ul className="flex items-center gap-2">
-                {data?.referralLinks?.map((item, index) => (
+                {data?.data?.referralLinks?.map((item, index) => (
                   <li
                     key={index}
                     className="flex items-center rounded-lg px-2 transition hover:text-ring hover:bg-secondary hover:border"
                   >
-                    <a href={item?.href} target="_blank" rel="noopener noreferrer">
+                    <a href={item?.href} target="_blank">
                       {item?.label}
                     </a>
                   </li>
@@ -50,9 +56,16 @@ const Info: React.FC<InfoProps> = ({
               </ul>
             ) : (
               <div className="flex items-center justify-center border border-dashed p-3 bg-secondary rounded-lg text-sm">
-                Nenhum link de referencia vinculado ao presente.
+                <p>
+                  Nenhum link de referencia vinculado ao presente.
+                </p>
               </div>
             )}
+
+            <div className="flex flex-col gap-2">
+              <h4 className="font-bold">Endereço do destinatário:</h4>
+              <span>Rua aimorés, 80 torre 1 apto 307 - socorro</span>
+            </div>
           </div>
         </div>
 
@@ -66,7 +79,7 @@ const Info: React.FC<InfoProps> = ({
             </span>
           </Button>
         </div>
-      </div>
+      </div >
     </>
   )
 };
