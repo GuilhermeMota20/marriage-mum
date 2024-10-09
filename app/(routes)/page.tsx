@@ -7,11 +7,14 @@ import { Header } from "../components/custom-ui/header";
 import { Pressentation } from "../components/custom-ui/pressentation";
 import { Resume } from "../components/custom-ui/resume";
 import { Scroll } from "../components/custom-ui/scroll";
+import { getFaq } from "../hooks/useFaq";
 import { getGifts } from "../hooks/useGifts";
+import { FaqType } from "../types/faq";
 import { GiftsPagination } from "../types/gift";
 
 export default async function Page() {
   const { giftsPagination } = await getGifts();
+  const { resultsFaq } = await getFaq();
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] bg-[#F4F4F4] h-100 flex flex-col items-center rounded-md">
@@ -30,7 +33,7 @@ export default async function Page() {
         <Resume />
         <Gift giftsPagination={giftsPagination as unknown as GiftsPagination} />
         <Contact />
-        <Faq />
+        <Faq resultsFaq={resultsFaq as unknown as FaqType[]} />
       </main>
 
       <Footer />

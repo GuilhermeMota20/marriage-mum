@@ -5,6 +5,103 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *faq → faqs*
+ */
+export interface FaqDocumentDataFaqsItem {
+  /**
+   * question field in *faq → faqs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Pergunta frequente
+   * - **API ID Path**: faq.faqs[].question
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  question: prismic.KeyTextField;
+
+  /**
+   * response field in *faq → faqs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Resposta da pergunta
+   * - **API ID Path**: faq.faqs[].response
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  response: prismic.KeyTextField;
+}
+
+type FaqDocumentDataSlicesSlice = never;
+
+/**
+ * Content for faq documents
+ */
+interface FaqDocumentData {
+  /**
+   * faqs field in *faq*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.faqs[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  faqs: prismic.GroupField<Simplify<FaqDocumentDataFaqsItem>>;
+
+  /**
+   * Slice Zone field in *faq*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FaqDocumentDataSlicesSlice> /**
+   * Meta Title field in *faq*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: faq.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *faq*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: faq.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *faq*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faq.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * faq document from Prismic
+ *
+ * - **API ID**: `faq`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FaqDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<FaqDocumentData>, "faq", Lang>;
+
+/**
  * Item in *presentes → images*
  */
 export interface PresentesDocumentDataImagesItem {
@@ -309,7 +406,7 @@ interface ResumoDocumentData {
 export type ResumoDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<ResumoDocumentData>, "resumo", Lang>;
 
-export type AllDocumentTypes = PresentesDocument | ResumoDocument;
+export type AllDocumentTypes = FaqDocument | PresentesDocument | ResumoDocument;
 
 /**
  * Default variation for Presentes Slice
@@ -362,6 +459,10 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      FaqDocument,
+      FaqDocumentData,
+      FaqDocumentDataFaqsItem,
+      FaqDocumentDataSlicesSlice,
       PresentesDocument,
       PresentesDocumentData,
       PresentesDocumentDataImagesItem,
