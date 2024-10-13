@@ -18,15 +18,19 @@ import { addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref as storageRef, uploadBytes } from "firebase/storage";
 import { StoreIcon } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../../ui/button";
 import { Textarea } from "../../ui/textarea";
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
+import { v4 as uuidv4 } from 'uuid';
 
 const destinatarioFormSchema = z.object({
+  id: z.string(),
   username: z
     .string()
     .min(1, { message: "Campo obrigatório" })
@@ -42,11 +46,15 @@ const destinatarioFormSchema = z.object({
     .min(1, { message: "Campo obrigatório" })
     .min(3, { message: "A mensagem deve conter no mínimo três caracteres." })
     .max(250, { message: "A mensagem deve conter no máximo 250 caracteres." }),
+  createdAt: z.string(),
 });
 
 type DestinatarioFormValues = z.infer<typeof destinatarioFormSchema>;
 
 export default function FormDestinatario() {
+  const id = uuidv4();
+
+  const router = useRouter();
   const pathName = usePathname();
   const uuid = pathName?.split("/")?.pop();
 
@@ -57,9 +65,11 @@ export default function FormDestinatario() {
   const form = useForm<DestinatarioFormValues>({
     resolver: zodResolver(destinatarioFormSchema),
     defaultValues: {
+      id: "",
       username: "",
-      file: undefined,
       mensagem: "",
+      createdAt: "",
+      file: undefined,
     },
   });
 
@@ -71,21 +81,40 @@ export default function FormDestinatario() {
   async function onSubmit(data: DestinatarioFormValues) {
     setUploading(true);
     try {
+      const formattedDate = format(new Date(), "dd/MM/yyyy HH:mm:ss", {
+        locale: ptBR,
+      });
+
       const storagePathRef = storageRef(storage, `images/${data.file.name}`);
       await uploadBytes(storagePathRef, data.file);
       const fileURL = await getDownloadURL(storagePathRef);
 
       const ref = collection(db, "giftDestinatario");
-      const formData = {
+      let formData = {
+        id,
         uuid,
         username: data.username,
-        file: fileURL,
         mensagem: data.mensagem,
+        createdAt: formattedDate,
+        file: fileURL,
       };
 
       await addDoc(ref, formData);
       toast.success("Comprovante de doação enviada com sucesso! Muito obrigado.");
       onCloseModalConfirmPresence();
+
+      formData = {
+        id: "",
+        uuid: "",
+        username: "",
+        mensagem: "",
+        createdAt: "",
+        file: ""
+      };
+
+      setTimeout(() => {
+        router?.push("/gift/success");
+      }, 2300);
     } catch (error) {
       console.error("Erro ao adicionar documento:", error);
       toast.error("Não foi possível comprovar sua doação! Por favor, tente novamente mais tarde.");

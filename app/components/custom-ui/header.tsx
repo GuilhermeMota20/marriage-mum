@@ -15,7 +15,7 @@ export const Header = () => {
     <>
       <header
         className={cn(
-          "sticky top-0 w-full p-8 flex justify-between items-center bg-white border-b z-30",
+          "sticky top-0 w-full p-8 flex justify-between items-center bg-white border-b z-30 rounded-t-lg",
           "gap-4 md:grid md:grid-rows-2 md:grid-cols-2",
           "lg:px-24",
           "xl:grid-rows-1 xl:grid-cols-3",

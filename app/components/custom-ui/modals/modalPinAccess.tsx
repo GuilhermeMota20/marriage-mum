@@ -14,8 +14,9 @@ import { Button } from "../../ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
 import Modal from "./modal";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
+import { useRouter } from "next/navigation";
 
-const expectedPin = process.env.NEXT_PUBLIC_PIN_ACCESS!;
+const expectedPin = process.env.PIN_ACCESS!;
 
 const FormSchema = z.object({
   pin: z.string().min(6, {
@@ -28,24 +29,19 @@ const FormSchema = z.object({
 
 export function ModalPinAccess() {
   const { isOpenModalPinAccess, onCloseModalPinAccess } = useGlobalsVariables();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       pin: "",
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log("data", data);
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   ),
-    // })
+    onCloseModalPinAccess();
+    router?.push("/dashboard");
   };
 
   return (

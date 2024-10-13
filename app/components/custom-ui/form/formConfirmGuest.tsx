@@ -1,5 +1,6 @@
 "use client"
 
+import { v4 as uuidv4 } from 'uuid';
 import {
   Form,
   FormControl,
@@ -15,7 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { addDoc, collection } from "firebase/firestore"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
-
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { db } from "@/app/services/Firebase"
 import { z } from "zod"
 import { ButtonPrimary } from "../buttonPrimary"
@@ -38,19 +40,28 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 export default function FormConfirmPresenca() {
   const { onCloseModalConfirmPresence } = useGlobalsVariables();
+  const id = uuidv4();
 
   const form = useForm({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
+      id,
       username: "",
+      createdAt: "",
     },
   });
 
   async function onSubmit(data: ProfileFormValues) {
     try {
+      const formattedDate = format(new Date(), "dd/MM/yyyy HH:mm:ss", {
+        locale: ptBR,
+      });
+
       const ref = collection(db, "guests");
       const formData = {
+        id,
         username: data?.username,
+        createdAt: formattedDate,
       };
 
       await addDoc(ref, formData);

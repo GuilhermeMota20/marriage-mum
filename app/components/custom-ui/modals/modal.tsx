@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import React from "react";
 
 interface ModalProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
   description?: string;
   size?: "max-w-sm" | "max-w-md" | "max-w-lg" | "max-w-xl" | "max-w-2xl" | "max-w-4xl";

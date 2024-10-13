@@ -20,6 +20,14 @@ type GlonalsVariablesType = {
   isOpenModalPinAccess: boolean;
   onOpenModalPinAccess: () => void;
   onCloseModalPinAccess: () => void;
+
+  isOpenModalConfirmExit: boolean;
+  onOpenModalConfirmExit: () => void;
+  onCloseModalConfirmExit: () => void;
+
+  isOpenModalViewNota: boolean;
+  onOpenModalViewNota: () => void;
+  onCloseModalViewNota: () => void;
 };
 
 export const useGlobalsVariables = create<GlonalsVariablesType>((
@@ -44,4 +52,12 @@ export const useGlobalsVariables = create<GlonalsVariablesType>((
   isOpenModalPinAccess: false,
   onOpenModalPinAccess: () => set({ isOpenModalPinAccess: true }),
   onCloseModalPinAccess: () => set({ isOpenModalPinAccess: false }),
+
+  isOpenModalConfirmExit: false,
+  onOpenModalConfirmExit: () => set({ isOpenModalConfirmExit: true }),
+  onCloseModalConfirmExit: () => set({ isOpenModalConfirmExit: false }),
+
+  isOpenModalViewNota: false,
+  onOpenModalViewNota: () => set({ isOpenModalViewNota: true }),
+  onCloseModalViewNota: () => set({ isOpenModalViewNota: false }),
 }));
