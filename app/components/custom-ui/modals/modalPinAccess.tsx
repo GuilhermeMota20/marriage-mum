@@ -16,7 +16,7 @@ import Modal from "./modal";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { useRouter } from "next/navigation";
 
-const expectedPin = process.env.PIN_ACCESS!;
+const expectedPin = process.env.NEXT_PUBLIC_PIN_ACCESS!;
 
 const FormSchema = z.object({
   pin: z.string().min(6, {
