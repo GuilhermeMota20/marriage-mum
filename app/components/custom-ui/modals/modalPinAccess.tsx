@@ -15,6 +15,9 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../../ui/fo
 import Modal from "./modal";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { useRouter } from "next/navigation";
+import useAdmVariables from "@/app/hooks/useAdmVariable";
+import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const expectedPin = process.env.NEXT_PUBLIC_PIN_ACCESS!;
 
@@ -29,6 +32,9 @@ const FormSchema = z.object({
 
 export function ModalPinAccess() {
   const { isOpenModalPinAccess, onCloseModalPinAccess } = useGlobalsVariables();
+  const { setDataAdm, dataAdm } = useAdmVariables();
+
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -38,11 +44,20 @@ export function ModalPinAccess() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     console.log("data", data);
-    onCloseModalPinAccess();
-    router?.push("/dashboard");
+    setLoading(true);
+    setDataAdm({
+      isLogged: true
+    });
   };
+
+  useEffect(() => {
+    if (dataAdm?.isLogged) {
+      onCloseModalPinAccess();
+      router?.push("/dashboard");
+    };
+  }, [dataAdm?.isLogged]);
 
   return (
     <>
@@ -86,7 +101,13 @@ export function ModalPinAccess() {
                 )}
               />
 
-              <Button type="submit">Entrar</Button>
+              <Button className="mt-4 bg-[#607A53] hover:bg-[#607A53] hover:brightness-90 shadow-lg" type="submit" disabled={loading}>
+                {
+                  loading
+                    ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /><span>Validando credencial...</span></>
+                    : <><span>Entrar</span></>
+                }
+              </Button>
             </form>
           </Form>
         </Modal>

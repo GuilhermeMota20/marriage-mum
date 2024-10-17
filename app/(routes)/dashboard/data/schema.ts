@@ -8,11 +8,11 @@ export const guestSchema = z.object({
 export type Guest = z.infer<typeof guestSchema>;
 
 export const giftSchema = z.object({
-  id: z.string(),
-  uuid: z.string(),
-  username: z.string(),
-  mensagem: z.string(),
-  createdAt: z.string(),
-  file: z.string(),
+  id: z.string().optional(),
+  uuid: z.string().optional(),
+  username: z.string().optional(),
+  mensagem: z.string().optional(),
+  createdAt: z.string().optional(),
+  file: z.string().optional(),
 });
 export type Gift = z.infer<typeof giftSchema>;

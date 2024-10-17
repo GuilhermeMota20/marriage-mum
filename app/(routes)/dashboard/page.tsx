@@ -5,8 +5,16 @@ import { GiftIcon, UsersIcon } from "lucide-react";
 import Header from "./_components/header";
 import TabContentControlRegister from "./_components/tab-content-control-register";
 import TabContentGifts from "./_components/tab-content-gifts";
+import useAdmVariables from "@/app/hooks/useAdmVariable";
+import NotFound from "@/app/not-found";
 
 export default function DashboardPage() {
+  const { dataAdm } = useAdmVariables();
+
+  if (!dataAdm?.isLogged) {
+    return <NotFound />
+  };
+
   return (
     <>
       <Header />

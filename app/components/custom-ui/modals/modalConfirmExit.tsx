@@ -1,13 +1,13 @@
 "use client";
 
 import { useGlobalsVariables } from "@/app/hooks/useGlobalsVariables";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { Button } from "../../ui/button";
 import Modal from "./modal";
 
 export default function ModalConfirmExit() {
   const { isOpenModalConfirmExit, onCloseModalConfirmExit } = useGlobalsVariables();
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <>
@@ -20,7 +20,8 @@ export default function ModalConfirmExit() {
           <div className="flex items-center justify-end gap-4">
             <Button variant="destructive" onClick={() => {
               onCloseModalConfirmExit();
-              router?.push("/");
+              window.location.href = "/";
+              // router?.push("/");
             }}>
               Confirmar
             </Button>
