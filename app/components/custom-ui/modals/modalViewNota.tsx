@@ -18,8 +18,8 @@ export default function ModalViewNota() {
         >
           <div className="relative h-full w-full flex items-center justify-center">
             <Image
-              src={data!.file}
-              alt={data!.uuid}
+              src={data!.file!}
+              alt={data!.uuid!}
               width={360}
               height={360}
             />
