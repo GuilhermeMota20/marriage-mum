@@ -57,7 +57,7 @@ export function ModalPinAccess() {
       onCloseModalPinAccess();
       router?.push("/dashboard");
     };
-  }, [dataAdm?.isLogged]);
+  }, [dataAdm?.isLogged, onCloseModalPinAccess, router]);
 
   return (
     <>
