@@ -77,22 +77,22 @@ export function ModalPinAccess() {
                     <FormControl className="w-full flex items-center justify-center">
                       <InputOTP pattern={REGEXP_ONLY_DIGITS_AND_CHARS} maxLength={6} {...field}>
                         <InputOTPGroup>
-                          <InputOTPSlot index={0} />
-                          <InputOTPSlot index={1} />
+                          <InputOTPSlot index={0} inputMode="text" />
+                          <InputOTPSlot index={1} inputMode="text" />
                         </InputOTPGroup>
 
                         <InputOTPSeparator />
 
                         <InputOTPGroup>
-                          <InputOTPSlot index={2} />
-                          <InputOTPSlot index={3} />
+                          <InputOTPSlot index={2} inputMode="text" />
+                          <InputOTPSlot index={3} inputMode="text" />
                         </InputOTPGroup>
 
                         <InputOTPSeparator />
 
                         <InputOTPGroup>
-                          <InputOTPSlot index={4} />
-                          <InputOTPSlot index={5} />
+                          <InputOTPSlot index={4} inputMode="text" />
+                          <InputOTPSlot index={5} inputMode="text" />
                         </InputOTPGroup>
                       </InputOTP>
                     </FormControl>

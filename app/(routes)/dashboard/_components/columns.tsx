@@ -4,7 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 
 import { Guest } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
-import { DataTableRowActions } from "./data-table-row-actions"
+import { DataTableGuestRowActions } from "./data-table-guest-row-actions"
 
 export const columns: ColumnDef<Guest>[] = [
   {
@@ -39,6 +39,6 @@ export const columns: ColumnDef<Guest>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => <DataTableGuestRowActions row={row} />,
   },
 ]

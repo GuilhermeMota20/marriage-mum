@@ -26,10 +26,6 @@ export function DataTableRowActions<TData>({
         }}>
           <EyeIcon className="w-4 h-4" />
         </Button>
-        {/* <DownloadButton
-          fileName="Nota fiscal da doação"
-          imageUrl={gift?.file}
-        /> */}
       </div>
     </>
   )
