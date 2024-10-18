@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 import * as React from 'react';
 import { ContactEmailTemplate } from '@/app/components/custom-ui/emailTemplate/contactMail';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 // const resend = new Resend("re_928Lryk2_7MLLsq3HKahsyghgYLbZkBDR");
 
 export async function POST(req: Request) {
