@@ -2,11 +2,8 @@
 "use client";
 
 import { useGiftConfirmPaid } from "@/app/hooks/useGiftConfirmPaid";
-import { getGifts } from "@/app/hooks/useGifts";
 import { GiftsPagination, Gift as TypeGift } from "@/app/types/gift";
-import { Loader2, RotateCw } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Button } from "../../ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
 import { TitleSection } from "../titleSection";
 import { CardGift } from "./cardGift";
@@ -22,15 +19,12 @@ export const Gift: React.FC<Props> = ({
   const { confirmPaid } = useGiftConfirmPaid();
 
   const [gifts, setGifts] = useState<TypeGift[]>([]);
-  const [nextPage, setNextPage] = useState(1);
   const [isViewSkeleton, setIsViewSkeleton] = useState(true);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [categorys, setCategorys] = useState<string[]>([]);
   const [currentTab, setCurrentTab] = useState("disponiveis");
 
   const handleToggleFilter = (value: string) => {
     setIsViewSkeleton(true);
-    setIsLoadingMore(true);
     setCurrentTab(value);
 
     if (value === "disponiveis") {
@@ -47,7 +41,6 @@ export const Gift: React.FC<Props> = ({
 
     setTimeout(() => {
       setIsViewSkeleton(false);
-      setIsLoadingMore(false);
     }, 2300);
   };
 
@@ -68,29 +61,6 @@ export const Gift: React.FC<Props> = ({
     });
 
     setCategorys(Array.from(uniqueCategories));
-  };
-
-  async function handleNextPage() {
-    if (!nextPage || nextPage === 0) return;
-
-    setIsViewSkeleton(true);
-    setIsLoadingMore(true);
-
-    try {
-      const { giftsPagination: nextPageData } = await getGifts(nextPage);
-      setNextPage(Number(nextPageData.next_page));
-      setGifts(prevGifts => [
-        ...prevGifts,
-        ...nextPageData.results as unknown as TypeGift[]
-      ]);
-    } catch (error) {
-      console.error("Erro ao carregar mais presentes:", error);
-    } finally {
-      setTimeout(() => {
-        setIsViewSkeleton(false);
-        setIsLoadingMore(false);
-      }, 2300);
-    }
   };
 
   useEffect(() => {
@@ -146,20 +116,6 @@ export const Gift: React.FC<Props> = ({
                     isSkeleton={isViewSkeleton}
                   />
                 ))}
-              </div>
-
-              <div className="w-full flex items-center justify-center mt-8">
-                {!isLoadingMore ? (
-                  <Button variant="outline" onClick={handleNextPage}>
-                    <RotateCw className="mr-2 h-4 w-4" />
-                    <span>Carregar mais</span>
-                  </Button>
-                ) : (
-                  <Button disabled variant="outline">
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    <span>Carregando</span>
-                  </Button>
-                )}
               </div>
             </>
           ) : (

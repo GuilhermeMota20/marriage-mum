@@ -1,25 +1,9 @@
 import { createClient } from "@/prismicio";
 
-function getPageNumberFromLink(nextPageLink: string | undefined): number | undefined {
-  if (!nextPageLink) return undefined;
-
-  const regex = /page=(\d+)/;
-  const match = nextPageLink.match(regex);
-
-  if (match && match.length > 1) {
-    return parseInt(match[1], 10);
-  }
-
-  return undefined;
-};
-
-export async function getGifts(nextPage: number | null = null) {
+export async function getGifts() {
   const prismic = createClient({});
   
-  const responseGifts = await prismic.getByType('presentes', {
-    pageSize: 6,
-    page: nextPage ? getPageNumberFromLink(nextPage.toString()) : 1,
-  });
+  const responseGifts = await prismic.getByType('presentes');
 
   const resultsGifts = responseGifts.results.map(gift => {
     return {
@@ -48,7 +32,6 @@ export async function getGifts(nextPage: number | null = null) {
   });
 
   const giftsPagination = {
-    next_page: responseGifts?.next_page,
     results: resultsGifts,
   };
 
