@@ -25,13 +25,13 @@ export const Pressentation = () => {
 
         <div className="flex items-start flex-col w-full gap-2">
           <i className="text-md font-light">
-            “ As muitas água não podem apagar este amor, nem os rios afogá-lo,
+            “As muitas água não podem apagar este amor, nem os rios afogá-lo,
             ainda que alguém desse todos os bens de sua casa pelo amor,
             certamente o desprezariam”
           </i>
 
           <span className="font-normal text-md">
-            Cantores de Salomão 8:7
+            Cantares de Salomão 8:7
           </span>
         </div>
 

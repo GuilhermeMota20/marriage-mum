@@ -3,7 +3,9 @@ import { createClient } from "@/prismicio";
 export async function getGifts() {
   const prismic = createClient({});
   
-  const responseGifts = await prismic.getByType('presentes');
+  const responseGifts = await prismic.getByType('presentes', {
+    pageSize: 50
+  });
 
   const resultsGifts = responseGifts.results.map(gift => {
     return {
